@@ -4,8 +4,7 @@
   gather_facts: false
   tasks:
   
-        #- ping:
-        - setup: gather_subset=!all
+        - ping:
           register: ping
           ignore_errors: true
           async: 4
