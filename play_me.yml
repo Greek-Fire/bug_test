@@ -27,13 +27,13 @@
               name:      "{{ item }}"
               group:     buggy
             with_items:  "{{ groups['all'] }}"
-            when:        hostvars[item]['df_test'] == 'fail'
+            when:        hostvars[item]['df_test']['rc'] is defined
                   
           - add_host:
               name:      "{{ item }}"
               group:     available
             with_items:  "{{ groups['all'] }}"
-            when:        hostvars[item]['df_test'] == 'pass'
+            when:        hostvars[item]['df_test']['rc'] == 0
           
           - template:
               src:       email.j2
