@@ -42,7 +42,7 @@
             from:        "{{ email_username }}"
             to:          "{{ email_to }}"
             cc:          "{{ email_cc }}"
-            subject:     "{{ list of buggy hosts }}"
+            subject:     "{{ email_subject }}"
             run_once:    true
             delegate_to: localhost
             body: |
