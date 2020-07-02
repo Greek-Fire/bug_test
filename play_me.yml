@@ -3,6 +3,7 @@
   hosts: all
   gather_facts: false
   tasks:
+        - shell: echo hi
         - ping:
           register: ping
           ignore_errors: true
