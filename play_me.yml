@@ -20,7 +20,8 @@
               name:      "{{ item }}"
               group:     buggy
             with_items:  "{{ groups['all'] }}"
-            when:        (hostvars[item]['df_test']['rc'] is defined and hostvars[item]['df_test']['rc'] != 0) or (hostvars[item]['df_test']['unreachable'] | bool)
+            #when:        (hostvars[item]['df_test']['rc'] is defined and hostvars[item]['df_test']['rc'] != 0) or (hostvars[item]['df_test']['unreachable'] | bool)
+            when: (hostvars[item]['df_test']['unreachable'] | bool)
           - add_host:
               name:      "{{ item }}"
               group:     available
