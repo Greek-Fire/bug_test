@@ -38,8 +38,7 @@
         #- set_fact:
         #    bug_list: "{{ groups.all | join('\n') }}"
           
-        - mail:
-          delegate_to: localhost
+        - mail:          
             from:        "{{ email_username }}"
             to:          "{{ email_to }}"
             cc:          "{{ email_cc }}"
@@ -49,6 +48,8 @@
               The attached list will display the buggy hosts.
               An Ansible admin will be able to use this list of hosts as an inventory source.
               {{ groups.available | join('\n') }}
+          delegate_to: localhost
+
           
        
 
