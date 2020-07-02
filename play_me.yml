@@ -16,7 +16,6 @@
         - add_host:
             name: "{{ item }}"
             group: available
-          when: df-test.finished == 1
           with_items: "{{ groups['all'] }}"
           delegate_to: localhost
           run_once: true
