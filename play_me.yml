@@ -22,6 +22,6 @@
   gather_facts: false
   strategy: free
   tasks:
-    - shell: sleep 100
+    - shell: sleep 1000
     - debug: var=inventory_hostname
     - debug: var=group_names
