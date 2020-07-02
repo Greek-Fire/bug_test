@@ -10,7 +10,8 @@
           poll: 2
           register: df-test
          
-        - debug: var=hostvars['target']['def-test']
+        - debug: var=hostvars['target']
+        - debug: var=hostvars['slave']
 
         - add_host:
             name: "{{ item }}"
