@@ -4,7 +4,7 @@
   gather_facts: false
   tasks:
   
-        - ping:
+        - command: "df -i"
           ignore_errors: true
           async: 2
           poll: 2
