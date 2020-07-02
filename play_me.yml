@@ -10,10 +10,10 @@
           poll:    2
           retries: 1
           ignore_errors: True
-          register: df-test
+          register: df_test
          
         - set_fact:
-            df-test: pass          
+            df_test: pass          
          
         - debug: var=hostvars['target']
         - debug: var=hostvars['slave']       
@@ -22,7 +22,7 @@
             name: "{{ item }}"
             group: available
           with_items: "{{ groups['all'] }}"
-          when: hostvars[item]['df-test'] == 'pass'
+          when: hostvars[item]['df_test'] == 'pass'
           delegate_to: localhost
           run_once: true
        
