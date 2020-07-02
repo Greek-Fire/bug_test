@@ -4,7 +4,7 @@
   gather_facts: false
   tasks:
   
-        - command:       "df -i"
+        - command:       "sleep 8"
           async:         2
           poll:          2
           retries:       1
