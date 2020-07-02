@@ -5,7 +5,7 @@
   tasks:
   
         #- ping:
-        - command: 'df -i'
+        - command: "df -i"
           register: ping
           ignore_errors: true
           async: 4
