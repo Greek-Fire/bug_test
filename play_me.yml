@@ -36,8 +36,10 @@
           run_once:    true
           
         - templates:
-            src:
-            dest: /tmp/buggy_hosts
+            src:       email.j2
+            dest:      /tmp/buggy_hosts
+          run_once:    true
+          delegate_to: localhost
           
         - mail:          
             from:        "{{ email_username }}"
