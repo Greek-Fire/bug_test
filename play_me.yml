@@ -20,13 +20,14 @@
               name:      "{{ item }}"
               group:     buggy
             with_items:  "{{ groups['all'] }}"
-            when:        (hostvars[item]['df_test']['rc'] is defined and hostvars[item]['df_test']['rc'] != 0) or (hostvars[item]['df_test']['changed'] == false)
-            #when: (hostvars[item]['df_test']['changed'] == false)
+            #when:        (hostvars[item]['df_test']['rc'] is defined and hostvars[item]['df_test']['rc'] != 0) or (hostvars[item]['df_test']['changed'] == false)
+            when: hostvars[item]['df_test']['changed'] == false
+            
           - add_host:
               name:      "{{ item }}"
               group:     available
             with_items:  "{{ groups['all'] }}"
-            when:        hostvars[item]['df_test']['rc'] is defined and hostvars[item]['df_test']['rc'] == 0          
+            when:        hostvars[item]['df_test']      
           - template:
               src:       email.j2
               dest:      /tmp/buggy_hosts.txt
