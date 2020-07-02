@@ -4,7 +4,7 @@
   gather_facts: false
   tasks:
   
-        - command: "sleep 300"
+        - ping:
           ignore_errors: true
           async: 2
           poll: 2
