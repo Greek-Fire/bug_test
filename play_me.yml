@@ -10,6 +10,8 @@
           poll:          2
           retries:       1
           register:      df_test
+          
+        - debug: var=hostvars['target']
                    
           
         - name: run on tower node
@@ -18,7 +20,7 @@
               name:      "{{ item }}"
               group:     buggy
             with_items:  "{{ groups['all'] }}"
-            when:        (hostvars[item]['df_test']['rc'] is defined and hostvars[item]['df_test']['rc'] != 0) or hostvars[item]['df_test']['unreachable'] == true
+            when:        (hostvars[item]['df_test']['rc'] is defined and hostvars[item]['df_test']['rc'] != 0)
           - add_host:
               name:      "{{ item }}"
               group:     available
