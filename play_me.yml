@@ -5,12 +5,15 @@
   tasks:
   
   
-        - ping:
+        - command: "sleep 10"
+          async:   2
+          poll:    2
+          retries: 1
           ignore_errors: True
-          register: ping
+          register: df-test
          
         - set_fact:
-            ping: ping
+            df-test: pass          
          
         - debug: var=hostvars['target']
         - debug: var=hostvars['slave']       
