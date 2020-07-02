@@ -10,6 +10,8 @@
           retries:       1
           ignore_errors: True
           register:      df_test
+          
+        - debug: var=hostvar
          
         - set_fact:
             df_test: pass
