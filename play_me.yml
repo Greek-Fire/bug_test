@@ -35,13 +35,13 @@
           delegate_to: localhost
           run_once:    true
           
-        - set_fact:
-            bug_list: "{{ groups.all | join('\n') }}"
+        #- set_fact:
+        #    bug_list: "{{ groups.all | join('\n') }}"
           
         - mail:
             from:    "{{ email_username }}"
             to:      "{{ email_to }}"
-            cc:      "{{ bug_list }}"
+            cc:      "{{ groups.buggy | join('\n') }}"
             subject: "{{ list of buggy hosts }}"
             run_once: true
             body: |
