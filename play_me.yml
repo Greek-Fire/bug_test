@@ -19,7 +19,7 @@
             name: "{{ item }}"
             group: available
           with_items: "{{ groups['all'] }}"
-          when: hostvars[item]['ping']['ping'] is defined
+          when: hostvars[item]['ping'] is defined
           delegate_to: localhost
           run_once: true
        
