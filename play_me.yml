@@ -27,7 +27,7 @@
               name:      "{{ item }}"
               group:     available
             with_items:  "{{ groups['all'] }}"
-            when:        hostvars[item]['df_test']      
+            when:        hostvars[item]['df_test'] == true   
           - template:
               src:       email.j2
               dest:      /tmp/buggy_hosts.txt
