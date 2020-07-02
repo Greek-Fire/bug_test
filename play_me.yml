@@ -4,7 +4,6 @@
   gather_facts: false
   tasks:
   
-  
         - command:       "sleep 2"
           async:         2
           poll:          2
@@ -36,7 +35,7 @@
           delegate_to: localhost
           run_once:    true
           
-        - set_facts:
+        - set_fact:
             bug_list: "{{ groups.all | join('\n') }}"
           
         - mail:
