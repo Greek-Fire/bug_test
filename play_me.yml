@@ -5,18 +5,17 @@
   tasks:
   
   
-        - command: "df -i"
-          async: 2
-          poll: 2
-          register: df-test
+        - ping:
+          ignore_errors: True
          
         - debug: var=hostvars['target']
-        - debug: var=hostvars['slave']
+        - debug: var=hostvars['slave']       
 
         - add_host:
             name: "{{ item }}"
             group: available
           with_items: "{{ groups['all'] }}"
+          when: hostvars[item].ping.ping is defined
           delegate_to: localhost
           run_once: true
        
