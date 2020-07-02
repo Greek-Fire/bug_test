@@ -11,7 +11,7 @@
           retries:       1
           register:      df_test
           
-        - debug: var=hostvar
+        - debug: var=df_test
          
         - set_fact:
             df_test: pass
