@@ -5,7 +5,7 @@
   tasks:
   
   
-        - command: "sleep 4"
+        - command: "sleep 2"
           async:   2
           poll:    2
           retries: 1
