@@ -9,7 +9,7 @@
           ignore_errors: true
           async: 4
           poll: 4
-          retries: 
+          retries: 2
 
         - add_host:
             name: "{{ item }}"
