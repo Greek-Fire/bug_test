@@ -4,9 +4,9 @@
   gather_facts: false
   tasks:
   
-        - command:       "df -i"
-          async:         4
-          poll:          4
+        - command:       "sleep 10"
+          async:         2
+          poll:          2
           retries:       1
           ignore_errors: True
           register:      df_test
