@@ -5,7 +5,6 @@
   tasks:
   
   
-        - ping:  
         - command: "df -i"
           ignore_errors: true
           async: 2
@@ -14,7 +13,7 @@
         - add_host:
             name: "{{ item }}"
             group: available
-          when: hostvars[item]['finished']['finished'] == 1
+          when: hostvars[item]['command']['finished'] == 1
           with_items: "{{ groups['all'] }}"
           delegate_to: localhost
           run_once: true
