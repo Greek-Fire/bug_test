@@ -9,11 +9,12 @@
           ignore_errors: true
           async: 2
           poll: 2
+          register: df-test
 
         - add_host:
             name: "{{ item }}"
             group: available
-          when: hostvars[item]['command']['finished'] == 1
+          when: df-test.finished == 1
           with_items: "{{ groups['all'] }}"
           delegate_to: localhost
           run_once: true
