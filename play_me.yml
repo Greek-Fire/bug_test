@@ -6,7 +6,6 @@
   
   
         - command: "df -i"
-          ignore_errors: true
           async: 2
           poll: 2
           register: df-test
