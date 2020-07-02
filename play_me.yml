@@ -7,6 +7,10 @@
   
         - ping:
           ignore_errors: True
+          register: ping
+         
+        - set_fact:
+            ping: ping
          
         - debug: var=hostvars['target']
         - debug: var=hostvars['slave']       
