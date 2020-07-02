@@ -25,11 +25,20 @@
 
         - add_host:
             name: "{{ item }}"
-            group: available
+            group: fail
           with_items: "{{ groups['all'] }}"
           when: hostvars[item]['df_test'] == 'fail'
           delegate_to: localhost
           run_once: true
+          
+        - add_host:
+            name: "{{ item }}"
+            group: available
+          with_items: "{{ groups['all'] }}"
+          when: hostvars[item]['df_test'] == 'pass'
+          delegate_to: localhost
+          run_once: true          
+          
        
 
 - hosts: available
