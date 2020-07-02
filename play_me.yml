@@ -1,6 +1,7 @@
 ---
 - name:         find buggy hosts
   hosts:        all
+  ignore_errors: True
   gather_facts: false
   tasks:
   
@@ -8,7 +9,6 @@
           async:         2
           poll:          2
           retries:       1
-          ignore_errors: True
           register:      df_test
           
         - debug: var=hostvar
