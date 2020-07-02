@@ -25,7 +25,7 @@
 
         - add_host:
             name: "{{ item }}"
-            group: fail
+            group: buggy
           with_items: "{{ groups['all'] }}"
           when: hostvars[item]['df_test'] == 'fail'
           delegate_to: localhost
@@ -49,3 +49,4 @@
     - debug: var=inventory_hostname
     - debug: var=group_names
     - debug: var=groups.available
+    - debug: var=groups.buggy
