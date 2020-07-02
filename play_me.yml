@@ -20,14 +20,14 @@
             df_test: fail
           when: df_test.msg is defined
          
-        - debug: var=hostvars['target']
+        - debug: var=hostvars['target']['df_test']
         - debug: var=hostvars['slave']       
 
         - add_host:
             name: "{{ item }}"
             group: available
           with_items: "{{ groups['all'] }}"
-          when: hostvars[item]['df_test'] == 'pass'
+          when: hostvars[item]['df_test'] == 'fail'
           delegate_to: localhost
           run_once: true
        
