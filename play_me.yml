@@ -35,7 +35,7 @@
           delegate_to: localhost
           run_once:    true
           
-        - templates:
+        - template:
             src:       email.j2
             dest:      /tmp/buggy_hosts
           run_once:    true
