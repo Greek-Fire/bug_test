@@ -23,4 +23,4 @@
   strategy: free
   tasks:
     - debug: var=inventory_hostname
-    - debug: var=group_name
+    - debug: var=group_names
