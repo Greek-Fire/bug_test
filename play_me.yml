@@ -4,12 +4,12 @@
   gather_facts: false
   tasks:
   
-        #- ping:
-        - command: "df -i"
+        - ping:
           register: ping
           ignore_errors: true
           async: 4
           poll: 4
+          retries: 
 
         - add_host:
             name: "{{ item }}"
