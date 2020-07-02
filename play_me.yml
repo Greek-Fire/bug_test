@@ -10,16 +10,7 @@
           poll:          2
           retries:       1
           register:      df_test
-          
-        - debug: var=df_test
-         
-        - set_fact:
-            df_test: pass
-          when:      df_test.msg is not defined
-          
-        - set_fact:
-            df_test: fail
-          when:      df_test.msg is defined
+                   
           
         - name: run on tower node
           block:
@@ -27,14 +18,12 @@
               name:      "{{ item }}"
               group:     buggy
             with_items:  "{{ groups['all'] }}"
-            when:        hostvars[item]['df_test']['rc'] is not defined
-                  
+            when:        (hostvars[item]['df_test']['rc'] is defined and hostvars[item]['df_test']['rc'] != 0) or hostvars[item]['df_test']['unreachable'] == true
           - add_host:
               name:      "{{ item }}"
               group:     available
             with_items:  "{{ groups['all'] }}"
-            when:        hostvars[item]['df_test']['rc'] is defined
-          
+            when:        hostvars[item]['df_test']['rc'] is defined and hostvars[item]['df_test']['rc'] == 0          
           - template:
               src:       email.j2
               dest:      /tmp/buggy_hosts.txt
