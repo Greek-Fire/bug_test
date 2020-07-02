@@ -11,7 +11,7 @@
           poll: 2
           register: df-test
          
-        - debug: msg=group.all
+        - debug: var=group.all
 
         - add_host:
             name: "{{ item }}"
