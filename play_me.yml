@@ -5,7 +5,7 @@
   tasks:
   
   
-        - command: "sleep 1"
+        - command: "sleep 4"
           async:   2
           poll:    2
           retries: 1
@@ -13,7 +13,12 @@
           register: df_test
          
         - set_fact:
-            df_test: pass          
+            df_test: pass
+          when: df_test.msg is not defined
+          
+        - set_fact:
+            df_test: fail
+          when: df_test.msg is defined
          
         - debug: var=hostvars['target']
         - debug: var=hostvars['slave']       
