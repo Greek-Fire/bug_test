@@ -1,0 +1,24 @@
+---
+- name: find buggy hosts
+  hosts: all
+  gather_facts: false
+  tasks:
+        - ping:
+          register: ping
+          ignore_errors: true
+          async: 4
+          poll: 4
+
+        - add_host:
+            name: "{{ item }}"
+            group: available
+          when: hostvars[item]['ping']['ping'] is defined
+          with_items: "{{ groups['all'] }}"
+          delegate_to: localhost
+          run_once: true
+
+- hosts: available
+  gather_facts: false
+  strategy: free
+  tasks:
+    - debug: var=inventory_hostname
